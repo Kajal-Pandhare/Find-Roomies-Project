@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.bitcodetech.findroomies.MainActivity
-import com.bitcodetech.findroomies.factory.ViewModelFactory
+import com.bitcodetech.findroomies.commons.factory.ViewModelFactory
 import com.bitcodetech.findroomies.auth.repository.LoginRepository
 import com.bitcodetech.findroomies.auth.viewmodel.LoginViewModel
 import com.bitcodetech.findroomies.databinding.LoginActivityBinding
