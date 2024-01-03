@@ -19,8 +19,9 @@ class PostsViewModel(
     fun fetchPosts() {
         CoroutineScope(Dispatchers.IO).launch {
             val posts = postsRepository.fetchPosts()
-            this@PostsViewModel.posts.addAll(posts)
+
             withContext(Dispatchers.Main){
+                this@PostsViewModel.posts.addAll(posts)
                 postsMutableLiveData.postValue(true)
             }
         }

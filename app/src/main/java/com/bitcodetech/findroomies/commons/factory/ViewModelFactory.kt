@@ -19,7 +19,7 @@ class ViewModelFactory(
             return LoginViewModel(repository) as T
         }
 
-        if(modelClass.isAssignableFrom(PostsRepository::class.java) && repository is PostsRepository) {
+        if(modelClass.isAssignableFrom(PostsViewModel::class.java) && repository is PostsRepository) {
             return PostsViewModel(repository) as T
         }
         throw Exception("Unable to create view model...")

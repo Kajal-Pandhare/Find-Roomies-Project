@@ -1,5 +1,6 @@
 package com.bitcodetech.findroomies.posts.fragment
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.bitcodetech.findroomies.databinding.PostsFragmentBinding
 import com.bitcodetech.findroomies.commons.factory.ViewModelFactory
 import com.bitcodetech.findroomies.posts.adapter.PostsAdapter
@@ -28,10 +30,25 @@ private lateinit var postsAdapter: PostsAdapter
         initViewModels()
         initAdapter()
         initObserver()
+        initListeners()
+
 
         postsViewModel.fetchPosts()
         return binding.root
     }
+    private fun initListeners() {
+        binding.recyclerPosts.addOnScrollListener(
+            object : RecyclerView.OnScrollListener() {
+                override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                    super.onScrollStateChanged(recyclerView, newState)
+                    if (!recyclerView.canScrollVertically(1) && newState == RecyclerView.SCROLL_STATE_IDLE) {
+                        postsViewModel.fetchPosts()
+                    }
+                }
+            })
+        }
+
+    @SuppressLint("NotifyDataSetChanged")
     private fun initObserver(){
         postsViewModel.postsMutableLiveData.observe(
             viewLifecycleOwner
