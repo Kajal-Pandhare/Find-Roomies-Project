@@ -2,6 +2,8 @@ package com.bitcodetech.findroomies.commons.factory
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.bitcodetech.findroomies.auth.addposts.repository.AddPostRepository
+import com.bitcodetech.findroomies.auth.addposts.viewmodels.AddPostViewModel
 import com.bitcodetech.findroomies.auth.repository.LoginRepository
 import com.bitcodetech.findroomies.auth.viewmodel.LoginViewModel
 import com.bitcodetech.findroomies.commons.repository.Repository
@@ -21,6 +23,9 @@ class ViewModelFactory(
 
         if(modelClass.isAssignableFrom(PostsViewModel::class.java) && repository is PostsRepository) {
             return PostsViewModel(repository) as T
+        }
+        if(modelClass.isAssignableFrom(AddPostViewModel::class.java) && repository is AddPostRepository) {
+            return AddPostViewModel(repository) as T
         }
         throw Exception("Unable to create view model...")
     }

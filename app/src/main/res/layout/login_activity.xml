@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/loginimg"
     android:gravity="center">
 
     <TextView
@@ -12,12 +13,12 @@
         android:layout_margin="10dp"
         android:gravity="center"
         android:padding="10dp"
-        android:text="Welcome"
+        android:text="Login"
         android:textSize="50sp" />
 
     <EditText
         android:id="@+id/edtUserName"
-        android:hint="Enter UserName/Email-id"
+        android:hint="Enter Username"
         android:textSize="20sp"
         android:textStyle="bold"
         android:gravity="center"
@@ -71,7 +72,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:textColor="@color/blue"
             android:text="Register"
             android:textSize="20sp"
             android:textStyle="bold" />
