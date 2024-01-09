@@ -9,7 +9,7 @@
     tools:context=".MainActivity">
 
     <fragment
-        android:name="com.bitcodetech.findroomies.posts.fragment.PostsFragment"
+        android:name="com.bitcodetech.findroomies.auth.posts.fragment.PostsFragment"
         android:id="@+id/postsFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
