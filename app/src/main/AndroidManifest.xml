@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Findroomies"
         tools:targetApi="31">
-        <activity android:name=".auth.activities.LoginActivity"
+        <activity android:name=".auth.login.activity.LoginActivity"
             android:exported="true">
             <intent-filter >
                 <action android:name="android.intent.action.MAIN"/>

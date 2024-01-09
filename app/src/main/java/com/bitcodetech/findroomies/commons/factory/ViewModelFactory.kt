@@ -4,8 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.bitcodetech.findroomies.auth.addposts.repository.AddPostRepository
 import com.bitcodetech.findroomies.auth.addposts.viewmodels.AddPostViewModel
-import com.bitcodetech.findroomies.auth.repository.LoginRepository
-import com.bitcodetech.findroomies.auth.viewmodel.LoginViewModel
+import com.bitcodetech.findroomies.auth.login.repository.LoginRepository
+import com.bitcodetech.findroomies.auth.login.viewmodel.LoginViewModel
 import com.bitcodetech.findroomies.commons.repository.Repository
 import com.bitcodetech.findroomies.posts.repository.PostsRepository
 import com.bitcodetech.findroomies.posts.viewmodel.PostsViewModel

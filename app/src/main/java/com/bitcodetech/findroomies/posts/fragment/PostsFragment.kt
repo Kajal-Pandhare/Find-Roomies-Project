@@ -1,10 +1,7 @@
 package com.bitcodetech.findroomies.posts.fragment
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Bundle
-import android.provider.Telephony.Mms.Intents
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bitcodetech.findroomies.R
 import com.bitcodetech.findroomies.auth.addposts.fragments.AddPostsFragment
-import com.bitcodetech.findroomies.auth.addposts.fragments.DetailsFragment
+import com.bitcodetech.findroomies.auth.details.fragments.DetailsFragment
 import com.bitcodetech.findroomies.databinding.PostsFragmentBinding
 import com.bitcodetech.findroomies.commons.factory.ViewModelFactory
 import com.bitcodetech.findroomies.posts.adapter.PostsAdapter
@@ -26,8 +23,6 @@ class PostsFragment : Fragment() {
 private lateinit var binding : PostsFragmentBinding
 private lateinit var postsViewModel: PostsViewModel
 private lateinit var postsAdapter: PostsAdapter
-private lateinit var detailsFragment: DetailsFragment
-//private var addPostsFragment = AddPostsFragment()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -40,7 +35,6 @@ private lateinit var detailsFragment: DetailsFragment
         initAdapter()
         initObserver()
         initListeners()
-
 
         postsViewModel.fetchPosts()
         return binding.root
@@ -69,8 +63,6 @@ private lateinit var detailsFragment: DetailsFragment
                 }
             }
     }
-
-
     private fun showDetailsFragment(post: Post) {
             val detailsFragment = DetailsFragment()
 
