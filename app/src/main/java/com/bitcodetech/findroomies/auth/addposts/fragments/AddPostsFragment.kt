@@ -20,7 +20,7 @@ class AddPostsFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = AddPostsFragmentBinding.inflate(layoutInflater)
 
         initViewModels()
@@ -32,19 +32,34 @@ class AddPostsFragment : Fragment() {
     }
     private fun initViewListeners(){
 
-        binding.btnaddPosts.setOnClickListener {
+        binding.btnAddPost.setOnClickListener {
             addPostViewModel.addPost(
                 selectedImage,
-                binding.edtName.text.toString(),
                 binding.edtAddress.text.toString(),
-                binding.edtRent.text.toString().toInt()
+                binding.edtState.text.toString(),
+                binding.edtCountry.text.toString(),
+                binding.edtPincode.text.toString().toInt(),
+                binding.edtLatitude.text.toString().toInt(),
+                binding.edtLongitude.text.toString().toInt(),
+                binding.edtDeposite.text.toString().toInt(),
+                binding.edtRent.text.toString().toInt(),
+                binding.edtAvailableFrom.text.toString(),
+                binding.edtNoOfCurrentRoommates.text.toString().toInt(),
+                binding.edtNoOfCurrentFemaleRoommates.text.toString().toInt(),
+                binding.edtNoOfCurrentMaleRoommates.text.toString().toInt(),
+                binding.edtIsFurnished.text.toString(),
+                binding.edtMinAge.text.toString().toInt(),
+                binding.edtMaxAge.text.toString().toInt(),
+                binding.edtGenderPreference.text.toString(),
+                binding.edtOccupation.text.toString(),
+                binding.edtNoOfRoommatesRequired.text.toString().toInt(),
             )
         }
     }
     private fun initImageSelectListener() {
-        binding.imagePosts.setOnClickListener {
+        binding.listingsImage1.setOnClickListener {
             selectedImage = R.drawable.room1
-            binding.imagePosts.alpha = 0.5f
+            binding.listingsImage1.alpha = 0.5f
         }
     }
     private fun initObserver()

@@ -7,7 +7,7 @@ import com.bitcodetech.findroomies.commons.repository.Repository
 
 class AddPostRepository : Repository() {
     fun addPost(
-        post : Post
+        post : AddPost
     ):Boolean{
         return true
     }
