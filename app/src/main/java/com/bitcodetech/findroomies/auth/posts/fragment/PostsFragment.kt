@@ -3,8 +3,10 @@ package com.bitcodetech.findroomies.auth.posts.fragment
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -23,6 +25,7 @@ class PostsFragment : Fragment() {
 private lateinit var binding : PostsFragmentBinding
 private lateinit var postsViewModel: PostsViewModel
 private lateinit var postsAdapter: PostsAdapter
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -71,7 +74,6 @@ private lateinit var postsAdapter: PostsAdapter
             .add(R.id.mainContainer,detailsFragment,null)
             .addToBackStack(null)
             .commit()
-
     }
 
 

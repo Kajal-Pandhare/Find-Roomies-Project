@@ -20,14 +20,23 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".auth.register.activity.ResisterActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action" />
+                <category android:name="android.intent.category" />
+            </intent-filter>
+        </activity>
+
 
         <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category" />
             </intent-filter>
         </activity>
     </application>

@@ -1,4 +1,6 @@
 package com.bitcodetech.findroomies.auth.details.repository
 
-class PostDetailsRepository {
+import com.bitcodetech.findroomies.commons.repository.Repository
+
+class PostDetailsRepository : Repository() {
 }
