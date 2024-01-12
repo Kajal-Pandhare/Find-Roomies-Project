@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/txtWelcomeOnboard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Welcome Onboard"
+        android:layout_gravity="center"
+        android:textSize="45sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txtCreateAccount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:text="Create an account to post and find a roomie"
+        android:textSize="17sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/imgRegister"
+        android:src="@mipmap/ic_launcher"
+        android:layout_width="100dp"
+        android:layout_height="100dp"/>
+
+    <EditText
+        android:id="@+id/edtName"
+        android:hint="Enter Your Full name"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:padding="5dp"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/edtEmailId"
+        android:hint="Enter Your Email-Id"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:padding="5dp"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/edtPassword"
+        android:hint="Enter Password"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:padding="5dp"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/edtConfirmPassword"
+        android:hint="Confirm Password"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:padding="5dp"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/edtGender"
+        android:hint="Gender"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:padding="5dp"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/edtMobileNo"
+        android:hint="Mobile No"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:padding="5dp"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/edtWhatsappNo"
+        android:hint="Whatsapp No"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:padding="5dp"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/edtDob"
+        android:hint="Date of Birth"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:padding="5dp"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btnRegister"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="Register"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+
+</LinearLayout>
