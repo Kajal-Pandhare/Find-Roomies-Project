@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.bitcodetech.findroomies.R
-import com.bitcodetech.findroomies.auth.addposts.fragments.AddPostsFragment
 import com.bitcodetech.findroomies.auth.ownerdetails.repository.OwnerDetailsRepository
 import com.bitcodetech.findroomies.auth.ownerdetails.viewmodel.OwnerDetailsViewModel
 import com.bitcodetech.findroomies.auth.posts.fragment.PostsFragment

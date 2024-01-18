@@ -8,6 +8,8 @@ import com.bitcodetech.findroomies.auth.details.repository.PostDetailsRepository
 import com.bitcodetech.findroomies.auth.details.viewmodel.PostDetailsViewModel
 import com.bitcodetech.findroomies.auth.login.repository.LoginRepository
 import com.bitcodetech.findroomies.auth.login.viewmodel.LoginViewModel
+import com.bitcodetech.findroomies.auth.myposts.repository.MyPostRepository
+import com.bitcodetech.findroomies.auth.myposts.viewmodel.MyPostViewModel
 import com.bitcodetech.findroomies.auth.ownerdetails.repository.OwnerDetailsRepository
 import com.bitcodetech.findroomies.auth.ownerdetails.viewmodel.OwnerDetailsViewModel
 import com.bitcodetech.findroomies.auth.posts.repository.PostsRepository
@@ -40,6 +42,9 @@ class ViewModelFactory(
         }
         if(modelClass.isAssignableFrom(RegistrationViewModel::class.java) && repository is RegistrationRepository) {
             return RegistrationViewModel(repository) as T
+        }
+        if(modelClass.isAssignableFrom(MyPostViewModel::class.java) && repository is MyPostRepository) {
+            return MyPostViewModel(repository) as T
         }
 
         throw Exception("Unable to create view model...")

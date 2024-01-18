@@ -2,9 +2,8 @@ package com.bitcodetech.findroomies.auth.addposts.viewmodels
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.bitcodetech.findroomies.auth.addposts.model.AddPost
+import com.bitcodetech.findroomies.auth.addposts.model.AddPostModel
 import com.bitcodetech.findroomies.auth.addposts.repository.AddPostRepository
-import com.bitcodetech.findroomies.auth.posts.models.Post
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -13,33 +12,32 @@ import kotlinx.coroutines.withContext
 class AddPostViewModel(private val addPostRepository: AddPostRepository
 ) : ViewModel() {
     val addPostMutableLiveData = MutableLiveData<Boolean>()
+    val addPostModels = ArrayList<AddPostModel>()
 
     fun addPost(
-        postImage :Int,
-        address : String,
-        state : String,
-        country : String,
-        pincode : Int,
-        latitude : Int,
-        longitude : Int,
-        deposite : Int,
-        rent : Int,
-        availableFrom : String,
-        noOfCurrentRoommates : Int,
-        noOfCurrentFemaleRoommates : Int,
-        noOfCurrentMaleRoommates : Int,
-        isFurnished : String,
-        minAge : Int,
-        maxAge : Int,
-        genderPreference : String,
-        occupation : String,
-        noOfRoommatesRequired : Int
+        address: String,
+        state: String,
+        country: String,
+        pincode: String,
+        latitude: String,
+        longitude: String,
+        deposite: String,
+        rent: String,
+        availableFrom: String,
+        noOfCurrentRoommates: String,
+        noOfCurrentFemaleRoommates: String,
+        noOfCurrentMaleRoommates: String,
+        isFurnished: String,
+        minAge: String,
+        maxAge: String,
+        genderPreference: String,
+        occupation: String,
+        noOfRoommatesRequired: String,
+        postImage: String
 
     ){
         CoroutineScope(Dispatchers.IO).launch {
-            val response = addPostRepository.addPost(
-                AddPost(
-                postImage,
+            val response = addPostRepository.addPost(AddPostModel(
                     address,
                     state,
                     country,
@@ -54,12 +52,12 @@ class AddPostViewModel(private val addPostRepository: AddPostRepository
                     noOfCurrentMaleRoommates,
                     isFurnished,
                     minAge,
-                    maxAge,
-                    genderPreference,
+                    maxAge,genderPreference,
                     occupation,
-                    noOfRoommatesRequired
+                    noOfRoommatesRequired,
+                    postImage
             )
-            )
+           )
             withContext(Dispatchers.Main){
                 addPostMutableLiveData.postValue(response)
             }
