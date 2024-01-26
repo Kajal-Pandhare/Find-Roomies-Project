@@ -9,7 +9,6 @@ import com.bitcodetech.findroomies.MainActivity
 import com.bitcodetech.findroomies.auth.login.network.LoginApiService
 import com.bitcodetech.findroomies.auth.login.repository.LoginRepository
 import com.bitcodetech.findroomies.auth.login.viewmodel.LoginViewModel
-import com.bitcodetech.findroomies.auth.register.activity.ResisterActivity
 import com.bitcodetech.findroomies.commons.factory.ViewModelFactory
 import com.bitcodetech.findroomies.databinding.LoginActivityBinding
 
@@ -26,7 +25,7 @@ class LoginActivity : AppCompatActivity() {
         initObserver()
     }
     private fun initObserver(){
-        loginViewModel.userLoginStatusLiveData.observe(
+        loginViewModel.loginUpdateAvailableLiveData.observe(
             this
         ){
             if(it) {
@@ -50,7 +49,7 @@ class LoginActivity : AppCompatActivity() {
         loginViewModel = ViewModelProvider(
             this,
             ViewModelFactory(
-                LoginRepository(LoginApiService.getInstance())
+                LoginRepository()
             )
         )[LoginViewModel::class.java]
     }
@@ -61,13 +60,13 @@ class LoginActivity : AppCompatActivity() {
                 binding.edtPassword.text.toString()
             )
         }
-        binding.txtRegister.setOnClickListener {
-            val intent = Intent(this@LoginActivity,ResisterActivity::class.java)
-            startActivity(intent)
-            //Toast.makeText(this,"text clicked",Toast.LENGTH_SHORT).show()
-
-
-        }
+//        binding.txtRegister.setOnClickListener {
+//            val intent = Intent(this@LoginActivity,ResisterActivity::class.java)
+//            startActivity(intent)
+//            //Toast.makeText(this,"text clicked",Toast.LENGTH_SHORT).show()
+//
+//
+//        }
     }
     private fun initViews(){
         binding = LoginActivityBinding.inflate(layoutInflater)

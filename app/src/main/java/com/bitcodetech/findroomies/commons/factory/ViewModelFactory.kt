@@ -14,8 +14,6 @@ import com.bitcodetech.findroomies.auth.ownerdetails.repository.OwnerDetailsRepo
 import com.bitcodetech.findroomies.auth.ownerdetails.viewmodel.OwnerDetailsViewModel
 import com.bitcodetech.findroomies.auth.posts.repository.PostsRepository
 import com.bitcodetech.findroomies.auth.posts.viewmodel.PostsViewModel
-import com.bitcodetech.findroomies.auth.register.repository.RegistrationRepository
-import com.bitcodetech.findroomies.auth.register.viewmodel.RegistrationViewModel
 import com.bitcodetech.findroomies.commons.repository.Repository
 import java.lang.Exception
 
@@ -40,9 +38,9 @@ class ViewModelFactory(
         if(modelClass.isAssignableFrom(OwnerDetailsViewModel::class.java) && repository is OwnerDetailsRepository) {
             return OwnerDetailsViewModel(repository) as T
         }
-        if(modelClass.isAssignableFrom(RegistrationViewModel::class.java) && repository is RegistrationRepository) {
-            return RegistrationViewModel(repository) as T
-        }
+//        if(modelClass.isAssignableFrom(RegistrationViewModel::class.java) && repository is RegistrationRepository) {
+//            return RegistrationViewModel(repository) as T
+//        }
         if(modelClass.isAssignableFrom(MyPostViewModel::class.java) && repository is MyPostRepository) {
             return MyPostViewModel(repository) as T
         }

@@ -5,10 +5,13 @@ import com.bitcodetech.findroomies.auth.login.models.LoginResponse
 import com.bitcodetech.findroomies.auth.login.network.LoginApiService
 import com.bitcodetech.findroomies.commons.repository.Repository
 
-class LoginRepository(private val loginApiService: LoginApiService
-) : Repository() {
-    suspend fun login(credentials: Credentials) : LoginResponse {
-        return loginApiService.login(credentials)
-    }
-
+class LoginRepository() : Repository() {//private val loginApiService: LoginApiService
+//    suspend fun login(credentials: Credentials) : LoginResponse {
+//        return loginApiService.login(credentials)
+//    }
+fun validateCredentials(
+    credentials: Credentials
+) : Boolean{
+    return true
+}
 }

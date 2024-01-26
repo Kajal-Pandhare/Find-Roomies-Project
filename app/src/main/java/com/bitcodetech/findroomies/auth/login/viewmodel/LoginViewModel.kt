@@ -13,7 +13,7 @@ class LoginViewModel(
     private val loginRepository: LoginRepository
 ) : ViewModel() {
 
-    val userLoginStatusLiveData = MutableLiveData<Boolean>()
+    /*val userLoginStatusLiveData = MutableLiveData<Boolean>()
     //val credentials = ArrayList<Credentials>()
     fun validateCredentials(username : String, password : String) {
         CoroutineScope(Dispatchers.IO).launch {
@@ -26,6 +26,21 @@ class LoginViewModel(
                 userLoginStatusLiveData.postValue(true)
             }
         }
-    }
+    }*/
+    val loginUpdateAvailableLiveData =MutableLiveData<Boolean>()
 
+    fun validateCredentials(
+        username : String,
+        password : String
+    ) {
+        CoroutineScope(Dispatchers.IO).launch {
+            val response = loginRepository.validateCredentials(
+                Credentials(username, password)
+            )
+
+            withContext(Dispatchers.Main) {
+                loginUpdateAvailableLiveData.postValue(response)
+            }
+        }
+    }
 }

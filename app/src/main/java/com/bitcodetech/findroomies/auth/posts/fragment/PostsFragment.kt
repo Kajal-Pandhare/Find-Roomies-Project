@@ -60,7 +60,7 @@ class PostsFragment : Fragment() {
         inflater.inflate(R.menu.search_menu, menu)
         menu.clear()
 
-        val searchItem = menu.findItem(R.id.searchMenu)
+        /*val searchItem = menu.findItem(R.id.searchMenu)
         val searchView = searchItem.actionView as SearchView
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
@@ -76,7 +76,7 @@ class PostsFragment : Fragment() {
             override fun onQueryTextChange(newText: String?): Boolean {
                 return true
             }
-        })
+        })*/
     }
 
     /*override fun onOptionsItemSelected(item: MenuItem): Boolean {
