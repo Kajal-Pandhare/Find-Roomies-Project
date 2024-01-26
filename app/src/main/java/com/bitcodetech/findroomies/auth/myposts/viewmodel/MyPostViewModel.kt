@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class MyPostViewModel(private val myPostRepository: MyPostRepository)  :ViewModel() {
-    val postsMutableLiveData = MutableLiveData<Boolean>()
+    val myPostsMutableLiveData = MutableLiveData<Boolean>()
     val myPost = ArrayList<MyPost>()
 
     fun fetchPosts() {
@@ -20,7 +20,7 @@ class MyPostViewModel(private val myPostRepository: MyPostRepository)  :ViewMode
 
             withContext(Dispatchers.Main) {
                 this@MyPostViewModel.myPost.addAll(myPost)
-                postsMutableLiveData.postValue(true)
+                myPostsMutableLiveData.postValue(true)
             }
         }
     }

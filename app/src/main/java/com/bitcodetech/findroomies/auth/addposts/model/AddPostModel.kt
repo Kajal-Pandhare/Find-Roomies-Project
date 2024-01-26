@@ -21,7 +21,7 @@ data class AddPostModel(
        val genderPreference: String,
        val occupation: String,
        val noOfRoommatesRequired: String,
-       val  postImage: String
+       val postImage: String
  ):Serializable /*{
 
      var postImage: Int= 0

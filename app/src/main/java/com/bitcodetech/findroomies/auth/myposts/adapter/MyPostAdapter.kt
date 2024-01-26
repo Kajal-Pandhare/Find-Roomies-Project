@@ -17,7 +17,7 @@ class MyPostAdapter(private val myPost: ArrayList<MyPost>) :
     private lateinit var binding: MyPostViewBinding
 
     interface OnMyPostClickListener{
-        fun onMyPostListener(post: MyPost, position: Int, myPostAdapter: MyPostAdapter)
+        fun onMyPostListener(editMyPostModel: MyPost, position: Int, myPostAdapter: MyPostAdapter)
     }
     var onMyPostClickListener : OnMyPostClickListener? = null
 

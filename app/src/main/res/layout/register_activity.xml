@@ -57,6 +57,7 @@
     <EditText
         android:id="@+id/edtPassword"
         android:hint="Enter Password"
+        android:inputType="textPassword"
         android:textStyle="bold"
         android:textSize="20sp"
         android:gravity="center"
@@ -68,6 +69,7 @@
     <EditText
         android:id="@+id/edtConfirmPassword"
         android:hint="Confirm Password"
+        android:inputType="textPassword"
         android:textStyle="bold"
         android:textSize="20sp"
         android:gravity="center"
@@ -77,21 +79,20 @@
         android:layout_height="wrap_content" />
     <EditText
         android:id="@+id/edtGender"
-        android:text="Gender"
+        android:hint="Gender"
         android:textStyle="bold"
         android:textSize="20sp"
         android:gravity="center"
         android:padding="5dp"
         android:layout_margin="10dp"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-
-    <Spinner
+    <!--<Spinner
         android:id="@+id/genderSpinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@id/edtGender"/>
-
+-->
     <EditText
         android:id="@+id/edtMobileNo"
         android:hint="Mobile No"

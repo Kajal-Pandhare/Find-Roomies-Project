@@ -4,7 +4,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.bitcodetech.findroomies.auth.login.models.Credentials
 import com.bitcodetech.findroomies.auth.login.repository.LoginRepository
-import com.bitcodetech.findroomies.commons.repository.Repository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -15,18 +14,16 @@ class LoginViewModel(
 ) : ViewModel() {
 
     val userLoginStatusLiveData = MutableLiveData<Boolean>()
-
-    fun validateCredentials(
-        username : String,
-        password : String
-    ){
+    //val credentials = ArrayList<Credentials>()
+    fun validateCredentials(username : String, password : String) {
         CoroutineScope(Dispatchers.IO).launch {
-             val response = loginRepository.validateCredentials(
+             val credentials = loginRepository.login(
                  Credentials(username, password)
              )
 
             withContext(Dispatchers.Main){
-                userLoginStatusLiveData.postValue(response)
+                //this@LoginViewModel.credentials.addAll(credentials)
+                userLoginStatusLiveData.postValue(true)
             }
         }
     }

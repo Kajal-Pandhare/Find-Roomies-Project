@@ -1,7 +1,9 @@
 package com.bitcodetech.findroomies.auth.register.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.bitcodetech.findroomies.auth.register.models.UserPostModel
 import com.bitcodetech.findroomies.auth.register.models.UserRegistration
 import com.bitcodetech.findroomies.auth.register.repository.RegistrationRepository
 import kotlinx.coroutines.CoroutineScope
@@ -15,7 +17,18 @@ class RegistrationViewModel(
 
     val registrationMutableLiveData = MutableLiveData<Boolean>()
 
-    fun postUserRegistration(
+    fun addUser(userPostModel: UserPostModel){
+        CoroutineScope(Dispatchers.IO).launch {
+            val response = registrationRepository.addUser(userPostModel)
+            Log.e("tag",response.toString())
+
+            withContext(Dispatchers.Main){
+                registrationMutableLiveData.postValue(true)
+            }
+        }
+    }
+
+   /* fun postUserRegistration(
         username: String,
         email: String,
         password: String,
@@ -26,7 +39,7 @@ class RegistrationViewModel(
         date_of_birth: String
     ) {
         CoroutineScope(Dispatchers.IO).launch {
-            val users = registrationRepository.postUserRegistration(
+            val users = registrationRepository.userRegistration()
                 UserRegistration(
                     username,
                     email,
@@ -42,5 +55,5 @@ class RegistrationViewModel(
                 registrationMutableLiveData.postValue(users)
             }
         }
-    }
+    }*/
 }

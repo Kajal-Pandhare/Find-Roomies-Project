@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import com.bitcodetech.findroomies.R
 import com.bitcodetech.findroomies.auth.addposts.model.AddPostModel
@@ -19,8 +20,21 @@ class RoomLookingForFragment : Fragment() {
         binding = RoomLookingForFragmentBinding.inflate(layoutInflater)
 
         initListener()
-
+        binding.root.setOnClickListener {  }
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val adapter = ArrayAdapter.createFromResource(
+            requireContext(),
+            R.array.Gender,
+            android.R.layout.simple_spinner_item
+        )
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
+        binding.spinner.adapter = adapter
     }
     private fun initListener(){
         binding.btnNext.setOnClickListener {

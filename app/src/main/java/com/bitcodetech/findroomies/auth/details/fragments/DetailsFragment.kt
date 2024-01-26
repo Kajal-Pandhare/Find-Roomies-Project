@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import com.bitcodetech.findroomies.R
 import com.bitcodetech.findroomies.auth.ownerdetails.fragments.OwnerDetailsFragment
 import com.bitcodetech.findroomies.databinding.DetailsFragmentBinding
+import com.google.android.material.bottomsheet.BottomSheetDialog
 
 class DetailsFragment : Fragment() {
 private lateinit var binding: DetailsFragmentBinding
@@ -25,12 +26,18 @@ private lateinit var binding: DetailsFragmentBinding
     }
     private fun initListener(){
         binding.btnContact.setOnClickListener {
-            val ownerDetailsFragment = OwnerDetailsFragment()
+            /*val ownerDetailsFragment = OwnerDetailsFragment()
 
             parentFragmentManager.beginTransaction()
                 .add(R.id.mainContainer,ownerDetailsFragment,null)
                 .addToBackStack(null)
-                .commit()
+                .commit()*/
+            val dialog = BottomSheetDialog(requireContext())
+            val bottomSheetDialog = layoutInflater.inflate(R.layout.owner_details_fragment, null)
+
+            dialog.setCancelable(false)
+            dialog.setContentView(bottomSheetDialog)
+            dialog.show()
         }
     }
     private fun initViews(){
