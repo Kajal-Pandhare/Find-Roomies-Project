@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.bitcodetech.findroomies.MainActivity
+import com.bitcodetech.findroomies.auth.login.network.LoginApiService
 import com.bitcodetech.findroomies.auth.login.repository.LoginRepository
 import com.bitcodetech.findroomies.auth.login.viewmodel.LoginViewModel
 import com.bitcodetech.findroomies.auth.register.activity.ResisterActivity
@@ -42,20 +43,21 @@ class LoginActivity : AppCompatActivity() {
         startActivity(
             Intent(this@LoginActivity, MainActivity::class.java)
         )
+        //Toast.makeText(this," login activity clicked",Toast.LENGTH_SHORT).show()
     }
 
     private fun initViewModels(){
         loginViewModel = ViewModelProvider(
             this,
             ViewModelFactory(
-                LoginRepository()
+                LoginRepository(LoginApiService.getInstance())
             )
         )[LoginViewModel::class.java]
     }
     private fun initListener(){
         binding.btnLogin.setOnClickListener {
             loginViewModel.validateCredentials(
-                binding.edtUserName.text.toString(),
+                binding.edtEmail.text.toString(),
                 binding.edtPassword.text.toString()
             )
         }

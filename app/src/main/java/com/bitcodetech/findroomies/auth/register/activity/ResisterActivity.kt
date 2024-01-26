@@ -8,6 +8,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.bitcodetech.findroomies.MainActivity
 import com.bitcodetech.findroomies.R
 import com.bitcodetech.findroomies.auth.login.activity.LoginActivity
+import com.bitcodetech.findroomies.auth.register.models.UserPostModel
+import com.bitcodetech.findroomies.auth.register.network.RegisterApiService
 import com.bitcodetech.findroomies.auth.register.repository.RegistrationRepository
 import com.bitcodetech.findroomies.auth.register.viewmodel.RegistrationViewModel
 import com.bitcodetech.findroomies.commons.factory.ViewModelFactory
@@ -38,17 +40,17 @@ class ResisterActivity  :AppCompatActivity() {
     }
     private fun initListeners(){
         binding.btnRegister.setOnClickListener {
-            registrationViewModel.postUserRegistration(
+            registrationViewModel.addUser(
+                UserPostModel(
                 binding.edtName.text.toString(),
                 binding.edtEmailId.text.toString(),
                 binding.edtPassword.text.toString(),
-                binding.edtConfirmPassword.text.toString(),
-                binding.edtGender.text.toString(),
+                binding.edtGender.text.toString().toInt(),
                 binding.edtMobileNo.text.toString().toInt(),
                 binding.edtWhatsappNo.text.toString().toInt(),
                 binding.edtDob.text.toString()
+                )
             )
-
         }
 
     }
@@ -73,7 +75,9 @@ class ResisterActivity  :AppCompatActivity() {
         registrationViewModel = ViewModelProvider(
             this,
             ViewModelFactory(
-                RegistrationRepository()
+                RegistrationRepository(
+                    RegisterApiService.getInstance()
+                )
             )
         )[RegistrationViewModel::class.java]
     }

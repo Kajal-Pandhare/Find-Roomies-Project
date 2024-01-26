@@ -47,7 +47,7 @@ private lateinit var ownerDetailsViewModel: OwnerDetailsViewModel
             viewLifecycleOwner
         ){
             if (it){
-
+                parentFragmentManager.popBackStack()
             }
         }
     }

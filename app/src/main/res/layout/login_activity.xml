@@ -18,8 +18,8 @@
         android:textSize="50sp" />
 
     <EditText
-        android:id="@+id/edtUserName"
-        android:hint="Enter Username"
+        android:id="@+id/edtEmail"
+        android:hint="Enter Email"
        android:textColorHint="#fff"
         android:textSize="20sp"
         android:textStyle="bold"

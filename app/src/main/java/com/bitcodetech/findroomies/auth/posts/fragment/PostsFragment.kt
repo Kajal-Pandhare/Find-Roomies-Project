@@ -1,10 +1,17 @@
 package com.bitcodetech.findroomies.auth.posts.fragment
 
 import android.annotation.SuppressLint
+import android.app.SearchManager
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import android.widget.Toast.makeText
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,11 +28,13 @@ import com.bitcodetech.findroomies.auth.posts.repository.PostsRepository
 import com.bitcodetech.findroomies.auth.posts.viewmodel.PostsViewModel
 import com.bitcodetech.findroomies.databinding.PostsFragmentBinding
 import com.bitcodetech.findroomies.commons.factory.ViewModelFactory
+import java.util.Locale
 
 class PostsFragment : Fragment() {
     private lateinit var binding: PostsFragmentBinding
     private lateinit var postsViewModel: PostsViewModel
     private lateinit var postsAdapter: PostsAdapter
+    private var posts= ArrayList<Post>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,11 +51,42 @@ class PostsFragment : Fragment() {
         initListeners()
         bottomNavigation()
 
+        setHasOptionsMenu(true)
         postsViewModel.fetchPosts()
         return binding.root
 
     }
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.search_menu, menu)
+        menu.clear()
 
+        val searchItem = menu.findItem(R.id.searchMenu)
+        val searchView = searchItem.actionView as SearchView
+
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                if (query != null){
+                    binding.recyclerPosts.scrollToPosition(0)
+                    postsViewModel.posts
+                    searchView.clearFocus()
+                }
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return true
+            }
+        })
+    }
+
+    /*override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.searchMenu-> {
+                return true
+            }
+            else -> return super.onOptionsItemSelected(item)
+        }
+    }*/
 
     private fun initListeners() {
         var isHidden = false
@@ -124,6 +164,8 @@ class PostsFragment : Fragment() {
     private fun initAdapter() {
         postsAdapter = PostsAdapter(postsViewModel.posts)
         binding.recyclerPosts.adapter = postsAdapter
+
+
     }
 
     private fun initViewModels() {

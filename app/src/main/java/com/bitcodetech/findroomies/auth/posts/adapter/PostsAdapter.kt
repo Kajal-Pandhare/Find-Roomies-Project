@@ -1,5 +1,6 @@
 package com.bitcodetech.findroomies.auth.posts.adapter
 
+import android.annotation.SuppressLint
 import android.provider.ContactsContract.CommonDataKinds.StructuredPostal
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +12,7 @@ import com.bitcodetech.findroomies.R
 import com.bitcodetech.findroomies.auth.posts.models.Post
 import com.bitcodetech.findroomies.databinding.PostsViewBinding
 
-class PostsAdapter(private val posts: ArrayList<Post>) :
+class PostsAdapter(private var posts: ArrayList<Post>) :
     RecyclerView.Adapter<PostsAdapter.PostsViewHolder>() {
     private lateinit var binding: PostsViewBinding
 

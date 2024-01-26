@@ -2,6 +2,7 @@ package com.bitcodetech.findroomies.auth.myposts.fragments
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
@@ -21,6 +22,7 @@ import com.bitcodetech.findroomies.auth.myposts.adapter.MyPostAdapter
 import com.bitcodetech.findroomies.auth.myposts.models.MyPost
 import com.bitcodetech.findroomies.auth.myposts.repository.MyPostRepository
 import com.bitcodetech.findroomies.auth.myposts.viewmodel.MyPostViewModel
+import com.bitcodetech.findroomies.auth.myprofile.fragments.EditProfileFragment
 import com.bitcodetech.findroomies.auth.myprofile.fragments.ProfileFragment
 import com.bitcodetech.findroomies.auth.posts.adapter.PostsAdapter
 import com.bitcodetech.findroomies.auth.posts.models.Post
@@ -48,8 +50,14 @@ private lateinit var myPostAdapter : MyPostAdapter
         initListeners()
 
         myPostViewModel.fetchPosts()
-
+        setHasOptionsMenu(true)
+        binding.root.setOnClickListener {  }
         return binding.root
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        menu.clear()
+        super.onCreateOptionsMenu(menu, inflater)
     }
     private fun initListeners() {
         binding.recyclerMyPost.addOnScrollListener(
@@ -61,6 +69,7 @@ private lateinit var myPostAdapter : MyPostAdapter
                     }
                 }
             })
+
         myPostAdapter.onMyPostClickListener =
             object : MyPostAdapter.OnMyPostClickListener {
                 override fun onMyPostListener(
@@ -68,25 +77,27 @@ private lateinit var myPostAdapter : MyPostAdapter
                     position: Int,
                     myPostAdapter: MyPostAdapter
                 ) {
-                    //showDetailsFragment(myPost)
+                    showDetailsFragment(myPost)
                     // Log.e("tag","event deligationn model work")
                 }
             }
+
     }
 
-    /*private fun showDetailsFragment(myPost: MyPost) {
-        val detailsFragment = DetailsFragment()
+
+    private fun showDetailsFragment(myPost: MyPost) {
+        val showDetailsFragment = ShowDetailsFragment()
 
         //val input = Bundle()
         parentFragmentManager.beginTransaction()
-            .add(R.id.mainContainer, detailsFragment, null)
+            .add(R.id.mainContainer, showDetailsFragment, null)
             .addToBackStack(null)
             .commit()
-    }*/
+    }
 
     @SuppressLint("NotifyDataSetChanged")
     private fun initObserver() {
-        myPostViewModel.postsMutableLiveData.observe(
+        myPostViewModel.myPostsMutableLiveData.observe(
             viewLifecycleOwner
         ) {
             if (it) {
@@ -94,6 +105,7 @@ private lateinit var myPostAdapter : MyPostAdapter
             }
         }
     }
+
 
     private fun initAdapter() {
         myPostAdapter = MyPostAdapter(myPostViewModel.myPost)

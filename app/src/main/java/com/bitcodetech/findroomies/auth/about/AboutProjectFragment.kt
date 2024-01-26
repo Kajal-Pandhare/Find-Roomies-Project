@@ -2,6 +2,8 @@ package com.bitcodetech.findroomies.auth.about
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
@@ -19,8 +21,14 @@ class AboutProjectFragment : Fragment() {
     ): View? {
         binding = AboutProjectFragmentBinding.inflate(layoutInflater)
 
+        setHasOptionsMenu(true)
         initListener()
         return binding.root
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        menu.clear()
+        super.onCreateOptionsMenu(menu, inflater)
     }
 
     private fun initListener() {
